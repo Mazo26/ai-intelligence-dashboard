@@ -22,7 +22,7 @@ A modern React.js application that helps you manage and generate reports with AI
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/yourusername/ai-intelligence-dashboard.git
+git clone https://github.com/Mazo26/ai-intelligence-dashboard.git
 cd ai-intelligence-dashboard
 ```
 
@@ -32,19 +32,13 @@ cd ai-intelligence-dashboard
 npm install
 ```
 
-3. Create a `.env` file in the root directory and add your OpenAI API key:
-
-```bash
-VITE_OPENAI_API_KEY=your_api_key_here
-```
-
-4. Start the development server:
+3. Start the development server:
 
 ```bash
 npm run dev
 ```
 
-5. Open your browser and navigate to `http://localhost:5173`
+4. Open your browser and navigate to `http://localhost:5173`
 
 ## AI Integration
 
