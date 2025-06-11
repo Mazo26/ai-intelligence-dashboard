@@ -200,7 +200,15 @@ export const ReportEditor: React.FC<ReportEditorProps> = ({
       </DialogTitle>
 
       <DialogContent
-        sx={{ p: 3, display: "flex", flexDirection: "column", gap: 2 }}
+        sx={{
+          p: 3,
+          display: "flex",
+          flexDirection: "column",
+          gap: 2,
+          mt: 3,
+          overflow: "auto",
+          maxHeight: "calc(100vh - 200px)",
+        }}
       >
         <TextField
           label='Report Title'
@@ -324,13 +332,22 @@ export const ReportEditor: React.FC<ReportEditorProps> = ({
           </Paper>
         )}
 
-        <RichTextEditor
-          value={formData.content}
-          onChange={(content) => setFormData({ ...formData, content })}
-          disabled={isReadOnly}
-          placeholder='Start writing your report content...'
-          minHeight={400}
-        />
+        <Box
+          sx={{
+            flex: 1,
+            minHeight: 0,
+            display: "flex",
+            flexDirection: "column",
+          }}
+        >
+          <RichTextEditor
+            value={formData.content}
+            onChange={(content) => setFormData({ ...formData, content })}
+            disabled={isReadOnly}
+            placeholder='Start writing your report content...'
+            minHeight={400}
+          />
+        </Box>
 
         {summary && (
           <Paper

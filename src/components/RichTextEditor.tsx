@@ -114,6 +114,7 @@ export const RichTextEditor: React.FC<RichTextEditorProps> = ({
           borderColor: "divider",
           borderRadius: 1,
           bgcolor: "grey.50",
+          overflow: "auto",
         }}
       >
         <div
@@ -122,6 +123,8 @@ export const RichTextEditor: React.FC<RichTextEditorProps> = ({
             minHeight: minHeight - 32,
             lineHeight: 1.6,
             color: "#666",
+            wordBreak: "break-word",
+            overflowWrap: "break-word",
           }}
         />
       </Paper>
@@ -135,6 +138,9 @@ export const RichTextEditor: React.FC<RichTextEditorProps> = ({
         borderColor: "divider",
         borderRadius: 1,
         overflow: "hidden",
+        display: "flex",
+        flexDirection: "column",
+        flex: 1,
       }}
     >
       <Box
@@ -218,6 +224,10 @@ export const RichTextEditor: React.FC<RichTextEditorProps> = ({
           lineHeight: 1.6,
           fontSize: "14px",
           fontFamily: "inherit",
+          flex: 1,
+          overflow: "auto",
+          wordBreak: "break-word",
+          overflowWrap: "break-word",
           "&:empty::before": {
             content: `"${placeholder}"`,
             color: "text.secondary",
@@ -248,9 +258,6 @@ export const RichTextEditor: React.FC<RichTextEditorProps> = ({
             margin: "0.5rem 0",
             paddingLeft: "2rem",
           },
-          "& li": {
-            margin: "0.25rem 0",
-          },
           "& blockquote": {
             margin: "1rem 0",
             padding: "0.5rem 1rem",
@@ -261,13 +268,10 @@ export const RichTextEditor: React.FC<RichTextEditorProps> = ({
           },
           "& a": {
             color: "primary.main",
-            textDecoration: "underline",
-          },
-          "& strong": {
-            fontWeight: 700,
-          },
-          "& em": {
-            fontStyle: "italic",
+            textDecoration: "none",
+            "&:hover": {
+              textDecoration: "underline",
+            },
           },
         }}
       />

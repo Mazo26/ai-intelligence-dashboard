@@ -18,6 +18,7 @@ import {
   Notebook as Robot,
   Eye,
   Calendar,
+  GripVertical,
 } from "lucide-react";
 import { format } from "date-fns";
 import { useSortable } from "@dnd-kit/sortable";
@@ -55,6 +56,7 @@ export const ReportCard: React.FC<ReportCardProps> = ({
   };
 
   const handleMenuClick = (event: React.MouseEvent<HTMLElement>) => {
+    event.stopPropagation();
     setAnchorEl(event.currentTarget);
   };
 
@@ -85,13 +87,10 @@ export const ReportCard: React.FC<ReportCardProps> = ({
     <Card
       ref={setNodeRef}
       style={style}
-      {...attributes}
-      {...listeners}
       sx={{
         height: "100%",
         display: "flex",
         flexDirection: "column",
-        cursor: isDragging ? "grabbing" : "grab",
         position: "relative",
         "&:hover": {
           transform: "translateY(-4px)",
@@ -109,13 +108,23 @@ export const ReportCard: React.FC<ReportCardProps> = ({
             mb: 2,
           }}
         >
-          <Typography
-            variant='h6'
-            component='h2'
-            sx={{ fontWeight: 600, lineHeight: 1.3 }}
-          >
-            {report.title}
-          </Typography>
+          <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+            <IconButton
+              size='small'
+              {...attributes}
+              {...listeners}
+              sx={{ cursor: "grab", "&:active": { cursor: "grabbing" } }}
+            >
+              <GripVertical size={16} />
+            </IconButton>
+            <Typography
+              variant='h6'
+              component='h2'
+              sx={{ fontWeight: 600, lineHeight: 1.3 }}
+            >
+              {report.title}
+            </Typography>
+          </Box>
           <IconButton size='small' onClick={handleMenuClick}>
             <MoreVert size={16} />
           </IconButton>
